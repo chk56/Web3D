@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | WebGL</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json");
+	  window.addEventListener("resize", onResize);
+	  
+	  function onResize()
+	  {
+		var w = window.innerWidth;
+		var h = window.innerHeight;
+		gameInstance.SendMessage("ResizeDetector", "SetWidth", w);
+		gameInstance.SendMessage("ResizeDetector", "SetHeigth", h);
+		gameInstance.SendMessage("ResizeDetector", "OnResize");
+	  }
+    </script>
+  </head>
+  <body style="margin:0; overflow:hidden;">
+    <div id="gameContainer"></div>
+  </body>
+</html>
